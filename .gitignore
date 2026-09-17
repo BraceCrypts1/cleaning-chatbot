@@ -1,0 +1,6 @@
+# Local secrets - never commit these 
+.env
+# Dependencies (none yet, but the rule starts now)
+node_modules/
+# Netlify local state
+.netlify/
