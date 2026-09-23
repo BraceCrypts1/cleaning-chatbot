@@ -119,4 +119,12 @@ export default async (req, context) => {
   }
 };
 
-export const config = { path: "/api/chat" };
+export const config = {
+  path: "/api/chat",
+  method: ["POST"],
+  rateLimit: {
+    windowLimit: 20,
+    windowSize: 60,
+    aggregateBy: ["ip", "domain"],
+  },
+};
