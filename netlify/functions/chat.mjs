@@ -7,7 +7,7 @@ const BUSINESS = {
   city: "Lagos",
   areas: "Lagos mainland, lekki, VI, Ibafo, Mowe",
   hours: "8am–6pm, Monday to Saturday",
-  whatsapp: "TEMP_WA_NUMBER",
+  whatsapp: "2340000000000",
   services: [
     "home / apartment cleaning (one-off and regular maintenance)",
     "post-construction cleaning",
@@ -113,7 +113,7 @@ export default async (req, context) => {
     const parsed = JSON.parse(raw);
     if (typeof parsed.reply !== "string" || typeof parsed.handoff !== "boolean") return json(FALLBACK);
 
-    return json(parsed);
+    return json({ ...parsed, whatsapp: BUSINESS.whatsapp });
   } catch {
     return json(FALLBACK);
   }
