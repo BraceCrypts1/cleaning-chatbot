@@ -106,8 +106,10 @@ export default async (req, context) => {
         }),
       }
     );
-    console.error("gemini upstream", upstream.status, (await upstream.text()).slice(0, 200));
-    if (!upstream.ok) return json(FALLBACK);
+     if (!upstream.ok) {
+      console.error("gemini upstream", upstream.status, (await upstream.text()).slice(0, 200));
+      return json(FALLBACK);
+    }
 
     const data = await upstream.json();
     const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text;
